@@ -28,12 +28,12 @@ public class ScalingSkillLimitsModPlugin extends BaseModPlugin {
 
     final private static float VANILLA_FIGHTER_BAYS_THRESHOLD = 8;
 
-    final private static float VANILLA_CARGO_CAPACITY_THRESHOLD = 120;
-    final private static float VANILLA_FUEL_CAPACITY_THRESHOLD = 120;
-    final private static float VANILLA_PERSONNEL_CAPACITY_THRESHOLD = 120;
+    final private static float VANILLA_CARGO_CAPACITY_THRESHOLD = 2000;
+    final private static float VANILLA_FUEL_CAPACITY_THRESHOLD = 2000;
+    final private static float VANILLA_PERSONNEL_CAPACITY_THRESHOLD = 5000;
 
-    final private static float VANILLA_FUEL_USE_REDUCTION_MAX_FUEL = 120;
-    final private static float VANILLA_SUPPLY_USE_REDUCTION_MAX_UNITS = 120;
+    final private static float VANILLA_FUEL_USE_REDUCTION_MAX_FUEL = 25;
+    final private static float VANILLA_SUPPLY_USE_REDUCTION_MAX_UNITS = 100;
 
     final private static int VANILLA_MAX_OFFICER_COUNT = 8;
 
