@@ -18,21 +18,41 @@ public class ScalingSkillLimitsModPlugin extends BaseModPlugin {
         return value;
     }
 
+    final private static float VANILLA_OP_THRESHOLD = 240;
+    final private static float VANILLA_OP_LOW_THRESHOLD = 120;
+    final private static float VANILLA_OP_ALL_LOW_THRESHOLD = 120;
+    final private static float VANILLA_OP_ALL_THRESHOLD = 240;
+    final private static float VANILLA_PHASE_OP_THRESHOLD = 40;
+    final private static float VANILLA_MILITARIZED_OP_THRESHOLD = 5;
+    final private static float VANILLA_AUTOMATED_POINTS_THRESHOLD = 120;
+
+    final private static float VANILLA_FIGHTER_BAYS_THRESHOLD = 8;
+
+    final private static float VANILLA_CARGO_CAPACITY_THRESHOLD = 120;
+    final private static float VANILLA_FUEL_CAPACITY_THRESHOLD = 120;
+    final private static float VANILLA_PERSONNEL_CAPACITY_THRESHOLD = 120;
+
+    final private static float VANILLA_FUEL_USE_REDUCTION_MAX_FUEL = 120;
+    final private static float VANILLA_SUPPLY_USE_REDUCTION_MAX_UNITS = 120;
+
+    final private static int VANILLA_MAX_OFFICER_COUNT = 8;
+
     @Override
     public void onGameLoad(boolean newGame) {
 
-        BaseSkillEffectDescription.OP_THRESHOLD = BaseSkillEffectDescription.OP_THRESHOLD * getLimitModifier();
-        BaseSkillEffectDescription.OP_LOW_THRESHOLD = BaseSkillEffectDescription.OP_LOW_THRESHOLD * getLimitModifier();
-        BaseSkillEffectDescription.OP_ALL_THRESHOLD = BaseSkillEffectDescription.OP_ALL_THRESHOLD * getLimitModifier();
-        BaseSkillEffectDescription.FIGHTER_BAYS_THRESHOLD = BaseSkillEffectDescription.FIGHTER_BAYS_THRESHOLD * getLimitModifier();
-        BaseSkillEffectDescription.PHASE_OP_THRESHOLD = BaseSkillEffectDescription.PHASE_OP_THRESHOLD * getLimitModifier();
-        BaseSkillEffectDescription.AUTOMATED_POINTS_THRESHOLD = BaseSkillEffectDescription.AUTOMATED_POINTS_THRESHOLD * getLimitModifier();
-        BulkTransport.CARGO_CAPACITY_THRESHOLD = BulkTransport.CARGO_CAPACITY_THRESHOLD * getLimitModifier();
-        BulkTransport.FUEL_CAPACITY_THRESHOLD = BulkTransport.FUEL_CAPACITY_THRESHOLD * getLimitModifier();
-        BulkTransport.PERSONNEL_CAPACITY_THRESHOLD = BulkTransport.PERSONNEL_CAPACITY_THRESHOLD * getLimitModifier();
-        ContainmentProcedures.FUEL_USE_REDUCTION_MAX_FUEL = ContainmentProcedures.FUEL_USE_REDUCTION_MAX_FUEL* getLimitModifier();
-        MakeshiftEquipment.SUPPLY_USE_REDUCTION_MAX_UNITS = MakeshiftEquipment.SUPPLY_USE_REDUCTION_MAX_UNITS* getLimitModifier();
+        BaseSkillEffectDescription.OP_THRESHOLD = VANILLA_OP_THRESHOLD * getLimitModifier();
+        BaseSkillEffectDescription.OP_LOW_THRESHOLD = VANILLA_OP_LOW_THRESHOLD * getLimitModifier();
+        BaseSkillEffectDescription.OP_ALL_THRESHOLD = VANILLA_OP_ALL_THRESHOLD * getLimitModifier();
+        BaseSkillEffectDescription.FIGHTER_BAYS_THRESHOLD = VANILLA_FIGHTER_BAYS_THRESHOLD * getLimitModifier();
+        BaseSkillEffectDescription.PHASE_OP_THRESHOLD = VANILLA_PHASE_OP_THRESHOLD * getLimitModifier();
+        BaseSkillEffectDescription.AUTOMATED_POINTS_THRESHOLD = VANILLA_AUTOMATED_POINTS_THRESHOLD * getLimitModifier();
+        BulkTransport.CARGO_CAPACITY_THRESHOLD = VANILLA_CARGO_CAPACITY_THRESHOLD * getLimitModifier();
+        BulkTransport.FUEL_CAPACITY_THRESHOLD = VANILLA_FUEL_CAPACITY_THRESHOLD * getLimitModifier();
+        BulkTransport.PERSONNEL_CAPACITY_THRESHOLD = VANILLA_PERSONNEL_CAPACITY_THRESHOLD * getLimitModifier();
+        ContainmentProcedures.FUEL_USE_REDUCTION_MAX_FUEL = VANILLA_FUEL_USE_REDUCTION_MAX_FUEL * getLimitModifier();
+        MakeshiftEquipment.SUPPLY_USE_REDUCTION_MAX_UNITS = VANILLA_SUPPLY_USE_REDUCTION_MAX_UNITS * getLimitModifier();
 
-        Global.getSector().getPlayerStats().getOfficerNumber().modifyMult("sclskl_scalingskilllimits", getLimitModifier());
+//        Global.getSector().getPlayerStats().getOfficerNumber().modifyMult("sclskl_scalingskilllimits", getLimitModifier());
+        Global.getSector().getPlayerStats().getOfficerNumber().setBaseValue(VANILLA_MAX_OFFICER_COUNT * getLimitModifier());
     }
 }
