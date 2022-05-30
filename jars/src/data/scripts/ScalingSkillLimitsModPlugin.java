@@ -11,10 +11,21 @@ import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 @SuppressWarnings("unused")
 public class ScalingSkillLimitsModPlugin extends BaseModPlugin {
 
+    private static final String DEFAULT_BATTLE_SIZE_SETTING = "sclskl_default_battle_size";
+    private static float DEFAULT_BATTLE_SIZE = 200;
+
+    private int getDefaultBattleSizeSetting() {
+        int value = Global.getSettings().getInt(DEFAULT_BATTLE_SIZE_SETTING);
+        if (value <= 0) {
+            throw new RuntimeException(DEFAULT_BATTLE_SIZE_SETTING + " must be greater than zero");
+        }
+        return value;
+    }
+
     private float getLimitModifier(){
         float value = 1.0f;
         float battleSize = Global.getSettings().getBattleSize();
-        value = battleSize / 300;
+        value = battleSize / DEFAULT_BATTLE_SIZE;
         return value;
     }
 
@@ -40,6 +51,8 @@ public class ScalingSkillLimitsModPlugin extends BaseModPlugin {
     @Override
     public void onGameLoad(boolean newGame) {
 
+        DEFAULT_BATTLE_SIZE = getDefaultBattleSizeSetting();
+
         BaseSkillEffectDescription.OP_THRESHOLD = VANILLA_OP_THRESHOLD * getLimitModifier();
         BaseSkillEffectDescription.OP_LOW_THRESHOLD = VANILLA_OP_LOW_THRESHOLD * getLimitModifier();
         BaseSkillEffectDescription.OP_ALL_THRESHOLD = VANILLA_OP_ALL_THRESHOLD * getLimitModifier();
@@ -52,7 +65,6 @@ public class ScalingSkillLimitsModPlugin extends BaseModPlugin {
         ContainmentProcedures.FUEL_USE_REDUCTION_MAX_FUEL = VANILLA_FUEL_USE_REDUCTION_MAX_FUEL * getLimitModifier();
         MakeshiftEquipment.SUPPLY_USE_REDUCTION_MAX_UNITS = VANILLA_SUPPLY_USE_REDUCTION_MAX_UNITS * getLimitModifier();
 
-//        Global.getSector().getPlayerStats().getOfficerNumber().modifyMult("sclskl_scalingskilllimits", getLimitModifier());
         Global.getSector().getPlayerStats().getOfficerNumber().setBaseValue(VANILLA_MAX_OFFICER_COUNT * getLimitModifier());
     }
 }
