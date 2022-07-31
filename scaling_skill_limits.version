@@ -5,9 +5,9 @@
 	"modVersion":
 	{
         	"major":0,
-	        "minor":2,
+	        "minor":3,
         	"patch":0 # Can be a number, character or string (1, 2, a, b, "-RC2", etc)
 	},
 	"starsectorVersion":"0.95.1a-RC6",
-	"directDownloadURL":"https://github.com/Torashuu/ScalingSkillLimits/releases/download/v0.2.0/ScalingSkillLimits_v0.2.0.zip",
+	"directDownloadURL":"https://github.com/Torashuu/ScalingSkillLimits/releases/download/v0.2.0/ScalingSkillLimits_v0.3.0.zip",
 }

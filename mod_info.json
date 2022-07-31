@@ -2,7 +2,7 @@
 	"id":"sclskl_scalingskilllimits", # internal id
 	"name":"Scaling Skill Limits", # displayed to the player
 	"author":"Torashuu",
-	"version":"0.2",
+	"version":"0.3",
 	"description":"Dynamically adjusts the skill limits depending on max fleet size setting. Added options to adjust to curvature of decay and/or set a lower limit",
 	"gameVersion": "0.95.1a-RC6",
 	"totalConversion":false,
